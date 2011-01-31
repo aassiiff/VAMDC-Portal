@@ -1,0 +1,117 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:jstl="http://java.sun.com/jsp/jstl/core"
+                template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:messages globalOnly="true" styleClass="message"/>
+    
+    	<h:form>
+    		<rich:dataTable width="483" id="carList" rows="30" columnClasses="col"
+            value="#{registryBrowser.extendedRegistryList}" var="categoryA" >
+            <f:facet name="header">
+                <rich:columnGroup>
+                	<rich:column rowspan="2"> 
+                        <h:outputText styleClass="headerText" value="Resource" />
+                    </rich:column>
+                    
+                    <rich:column rowspan="2">
+                        <h:outputText styleClass="headerText" value="Keywords" />
+                    </rich:column>
+                    
+                    <rich:column colspan="3">
+                        <h:outputText styleClass="headerText" value="Get Data" />
+                    </rich:column>
+                    
+                    <rich:column rowspan="2">
+                        <h:outputText styleClass="headerText" value="Run Application" />
+                    </rich:column>
+                    <rich:column breakBefore="true">
+                                <h:outputText value="via TAP" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="via XSAMS" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="via Website" />
+                            </rich:column>
+                </rich:columnGroup>
+            </f:facet>
+						
+            <h:column>
+                <h:outputText value="#{categoryA.resource.title}" />
+            </h:column>
+            
+            <h:column>
+                <h:outputText value="#{categoryA.resource.shortName}" />
+            </h:column>
+            
+            <h:column>
+                
+                <s:link view="/tapInterface.xhtml" rendered="#{categoryA.hasTAP}">
+                	<h:outputText value="[TAP]" />
+                	<f:param name="url" 
+                        value="#{categoryA.tapURL}"/>
+                        <f:param name="index" 
+                        value="#{categoryA.resourceLocation}"/>
+                </s:link>
+            </h:column>
+            
+            <h:column>
+                <s:link view="/xsamInterface.xhtml" rendered="#{categoryA.hasXSAM}">
+                	<h:outputText value="[XSAM]" />
+                	<f:param name="url" 
+                        value="#{categoryA.xsamURL}"/>
+                        <f:param name="index" 
+                        value="#{categoryA.resourceLocation}"/>
+                </s:link>
+            </h:column>
+            
+            <h:column>
+                <s:link target="new" rendered="#{categoryA.hasWEB}">
+                	<a href="#{categoryA.webURL}">[website]</a>
+                </s:link>
+            </h:column>
+            
+            <h:column>
+            	<s:link view="/componentHolder.xhtml" disabled="true">
+                	<h:outputText value="#{categoryA.resource.identifier}" />
+                	<f:param name="from" 
+                        value="home.xhtml"/>
+                    <f:param name="index" 
+                        value="#{categoryA.resourceLocation}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+    </h:form>
+    <rich:panel>
+    	<table align="right">
+    		<tr>
+    			<td>
+    				<rich:spacer width="240" height="10" />
+    			</td>
+    			<td>
+    				<rich:spacer width="315" height="10" />
+    			</td>
+    			<td bgcolor="#C2DFFF">
+        			<s:link view="/xsamInterface.xhtml" value="Submit Multiple XSAMS Queries" 
+        				disabled="#{registryBrowser.xsamsListForCheckBoxes.isEmpty()}" 
+        				style="font-size: 16px; color: black; " onmouseover="style.fontSize='20px';"
+        				 onmouseout="style.fontSize='16px';"/>
+        		</td>
+        		<td></td>
+        	</tr>
+        	<tr></tr>
+        </table>
+        <br/>
+    </rich:panel>
+    
+</ui:define> 
+</ui:composition>
