@@ -1,9 +1,9 @@
-#Thu Nov 18 20:25:00 GMT 2010
+#Fri Mar 25 21:38:45 GMT 2011
 action.package=org.domain.registrybrowser.session
-action.sources=/vamdc-portal/src/hot
+action.sources=/vamdc-portal/WebContent/layout/src/hot
 eclipse.preferences.version=1
 model.package=org.domain.registrybrowser.entity
-model.sources=/vamdc-portal/src/main
+model.sources=/vamdc-portal/WebContent/layout/src/main
 seam.project.connection.profile=DefaultDS
 seam.project.deployment.type=war
 seam.project.settings.version=1.1

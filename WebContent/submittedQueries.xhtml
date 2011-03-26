@@ -23,20 +23,24 @@
                 	<h:column>
                         <h:outputText styleClass="headerText" value="Query" />
                     </h:column>
-                    <h:column>
+                    <!--  
+                    <rich:column> 
                         <h:outputText styleClass="headerText" value="Resource" />
-                    </h:column>
-                    <h:column>
-                        <h:outputText styleClass="headerText" value="Query ID" />
-                    </h:column>
+                    </rich:column>
+                    -->
                     <h:column>
                         <h:outputText styleClass="headerText" value="Status" />
                     </h:column>
                     <h:column>
                         <h:outputText styleClass="headerText" value="View" />
                     </h:column>
+                    <!--  
                     <h:column>
-                        <h:outputText styleClass="headerText" value="View" />
+                        <h:outputText styleClass="headerText" value="Download" />
+                    </h:column>
+                    -->
+                     <h:column>
+                        <h:outputText styleClass="headerText" value="Download URL" />
                     </h:column>
                 </rich:columnGroup>
             </f:facet>
@@ -46,14 +50,13 @@
             </h:column>
             
 			<h:column>
-                <h:outputText value="#{categoryB.queryAsString}" />
+                <h:outputText value="#{categoryB.resoourceURL}/#{categoryB.encodedQuery}" />
             </h:column>
+            <!--  
             <h:column>
-                <h:outputText value="#{categoryB.resoourceURL}" />
+                <h:outputText value="#{categoryB.resource.title}" />
             </h:column>
-            <h:column>
-                <h:outputText value="#{categoryB.queryID}" />
-            </h:column>
+            -->
             <h:column>
                 <h:outputText value="Finished" rendered="#{categoryB.queryStatus}"/>
                 <h:outputText value="Executing" rendered="#{not categoryB.queryStatus}"/>
@@ -64,15 +67,25 @@
                 	<h:outputText value="View" rendered="#{categoryB.queryStatus and categoryB.queryType == 'TAP'}"/>
                 	<f:param name="queryIndex" 
                         value="#{categoryB.indexInList}"/>
-                </s:link>                   
+                </s:link>  
+                <!--                  
                 <s:link target="new" rendered="#{categoryB.queryStatus and categoryB.queryType == 'xsams'}">
-                	<a href="http://camd10.ast.cam.ac.uk:9090/?htmlFile=#{categoryB.queryID}.html">View</a>
+                	<a href="http://localhost:9090/?htmlFile=#{categoryB.queryID}.html">View</a>
+                </s:link>
+                --> 
+                <s:link rendered="#{categoryB.queryStatus and categoryB.queryType == 'xsams'}" onclick="window.open('http://localhost:9090/?htmlFile=#{categoryB.queryID}.html','mywindow','width=1200,height=800')">
+                	<h:outputText value="View"/>
                 </s:link>
             </h:column>
+            <!--  
             <h:column>                        
             	<s:link target="new" rendered="#{categoryB.queryStatus}">
-                	<a href="http://camd10.ast.cam.ac.uk:9090/?htmlFile=#{categoryB.queryID}.xml">Download</a>
+                	<a href="http://localhost:9090/?htmlFile=#{categoryB.queryID}.xml">Download</a>
                 </s:link>
+            </h:column>
+            -->
+            <h:column rendered="#{categoryB.queryStatus}">
+                <h:outputText value="#{registryBrowser.fileServerURL}/?htmlFile=#{categoryB.queryID}.xml" />
             </h:column>
         </rich:dataTable>
     </h:form>

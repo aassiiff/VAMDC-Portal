@@ -22,8 +22,8 @@ public class ExtendedRegistry{
 	private boolean hasXSAM = false;
 	private boolean hasWEB = false;
 	
-	private String contactEmail;
-	private String contactID;
+	private String contactID = "";
+	private String contactEmail = "";
 	
 	private Resource resource;
 	/**
@@ -110,20 +110,21 @@ public class ExtendedRegistry{
 		this.hasWEB = hasWEB;
 	}
 
-	public String getContactEmail() {
-		return contactEmail;
-	}
-
-	public void setContactEmail(String contactEmail) {
-		this.contactEmail = contactEmail;
-	}
-
 	public String getContactID() {
 		return contactID;
 	}
 
 	public void setContactID(String contactID) {
 		this.contactID = contactID;
+	}
+
+	public String getContactEmail() {
+		return contactEmail;
+	}
+
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
 	}	
+	
 	
 }
