@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="layout/template.xhtml">
+    <style>
+        .optionList {
+          height:22px;
+        }
+        .vertical-menu-cell {
+            padding:0px 4px 0px 4px;
+        }
+    
+    </style>
+                
+	<ui:define name="body">
+		<rich:panel>
+			
+			<h:panelGrid id="xsamsFormPanel" columns="3">
+				<rich:panel>
+					<f:facet name="header">
+		                <h:outputText value="Available Nodes"/>
+		            </f:facet>
+					<h:panelGrid id="nodePanel">
+						<h:form>
+					       <h:selectManyCheckbox id="nodes" value="#{navigator.selectedNodes}" layout="pageDirection">			           
+							      <f:selectItem  itemValue="vald" itemLabel="Vienna Atomic Line Database" />
+							      <f:selectItem  itemValue="basecol" itemLabel="BASECOL" />
+							      <f:selectItem  itemValue="cologne" itemLabel="Cologne Database for Molecular Spectroscopy" />
+							      <f:selectItem  itemValue="ethylene" itemLabel="Ethylene Database" />
+							      <a4j:support event="onchange" action="#{navigator.nodeChanged}" reRender="mainOptionPanel"/>   
+					        </h:selectManyCheckbox>
+					   </h:form>
+					</h:panelGrid>
+				</rich:panel>
+				<h:panelGrid id="mainOptionPanel">
+					<a4j:include id="mainOptionBody"
+						viewId="#{navigator.mainOptionPanel}" />
+				</h:panelGrid>
+				
+				<h:panelGrid id="formPanel">
+					<h:panelGrid id="formPanel1">
+						<a4j:include id="formBody1"
+							viewId="#{navigator.formPanel1}" />
+					</h:panelGrid>
+					<h:panelGrid id="formPanel2">
+						<a4j:include id="formBody2"
+							viewId="#{navigator.formPanel2}" />
+					</h:panelGrid>
+					<h:panelGrid id="formPanel3">
+						<a4j:include id="formBody3"
+							viewId="#{navigator.formPanel3}" />
+					</h:panelGrid>
+				</h:panelGrid>
+			</h:panelGrid>
+		</rich:panel> 
+	</ui:define>
+</ui:composition>

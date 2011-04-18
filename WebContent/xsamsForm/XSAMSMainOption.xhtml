@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j">
+
+	<style>
+        .optionList {
+          height:32px;
+        }
+        .vertical-menu-cell {
+            padding:0px 4px 0px 4px;
+        }
+    
+    </style>
+    
+	<h:panelGrid >
+        <rich:panel>
+            <f:facet name="header">
+                <h:outputText value="Primary Options"/>
+            </f:facet>
+            
+            <a4j:form ajaxSubmit="true">
+	            <rich:dropDownMenu style="background-color:#B5DAFF; border:3px solid #{a4jSkin.panelBorderColor}" value="Species"
+	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">
+	                <rich:menuItem value="Ions" reRender="formPanel1, mainOptionPanel" action="#{navigator.subOption11}"
+	                	disabled="#{navigator.subOption11Disabled}" />
+	                <rich:menuItem value="Atoms" reRender="formPanel1, mainOptionPanel" action="#{navigator.subOption21}"
+	                	disabled="#{navigator.subOption21Disabled}" />
+	                <rich:menuItem value="Molecules" reRender="formPanel1, mainOptionPanel" action="#{navigator.subOption31}"
+	                	disabled="#{navigator.subOption31Disabled}"/>
+	            </rich:dropDownMenu>
+            </a4j:form>
+            
+            <rich:spacer height="10"/>
+            
+            <a4j:form ajaxSubmit="true">
+	            <rich:dropDownMenu style="background-color:#CCFFCC; border:3px solid #{a4jSkin.panelBorderColor}" value="Radioactive Transitions"
+	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">
+	                <rich:menuItem value="Energy" reRender="formPanel2, mainOptionPanel" action="#{navigator.subOption12}"
+	                	disabled="#{navigator.subOption12Disabled}"/>
+	                <rich:menuItem value="Wavelength" reRender="formPanel2, mainOptionPanel" action="#{navigator.subOption22}"
+	                	disabled="#{navigator.subOption22Disabled}"/>
+	                <rich:menuItem value="Frequency" reRender="formPanel2, mainOptionPanel" action="#{navigator.subOption32}"
+	                	disabled="#{navigator.subOption32Disabled}"/>
+	            </rich:dropDownMenu>
+            </a4j:form>
+            
+            <rich:spacer height="10"/> 
+            
+            <a4j:form ajaxSubmit="true">
+	            <rich:dropDownMenu style="background-color:#FFE5F2; border:3px solid #{a4jSkin.panelBorderColor}" value="Collisions"
+	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">
+	                <rich:menuItem value="Suboption3-1" reRender="formPanel3, mainOptionPanel" action="#{navigator.subOption13}" 
+	                	disabled="#{navigator.subOption13Disabled}"/>
+	                <rich:menuItem value="Suboption3-2" reRender="formPanel3, mainOptionPanel" action="#{navigator.subOption23}"
+	                	disabled="#{navigator.subOption23Disabled}"/>
+	                <rich:menuItem value="Suboption3-3" reRender="formPanel3, mainOptionPanel" action="#{navigator.subOption33}"
+	                	disabled="#{navigator.subOption33Disabled}"/>
+	            </rich:dropDownMenu>
+            </a4j:form>
+                     
+        </rich:panel>
+       
+    </h:panelGrid>                
+
+</ui:composition>

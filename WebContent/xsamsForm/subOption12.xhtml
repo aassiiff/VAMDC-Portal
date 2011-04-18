@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:s="http://jboss.com/products/seam/taglib"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+	 	<style>
+        .top{
+            vertical-align:top;
+        }
+        .pbody{
+            padding:0px;
+            height:120px; 
+            width:150px;
+        }
+    </style>
+
+ 	<rich:panel style="background-color:#66FF66">
+ 		<f:facet name="header">
+			<h:outputText value="Sub Option 1 of Option 2"></h:outputText>
+		</f:facet>
+    	<h:form>
+    		<h:panelGrid columns="2" columnClasses="top, top"> 
+    			<h:panelGrid columns="3" columnClasses="top, top">
+		            	<h:outputText value="Atomic (elemental) symbol:" />
+		            	<rich:spacer width="60" height="10"/>
+		            	<h:inputText value="" />
+		            	
+		            	<h:outputText value="Molecular Species InChIKey:" />
+		            	<rich:spacer width="60" height="10"/>
+		            	<h:inputText value="" />
+		            	
+		            	<h:outputText value="Molecular Species Stoichiometric Formula:" />
+		            	<rich:spacer width="135" height="10"/>
+		            	<h:inputText value="" />
+		            </h:panelGrid>
+    		</h:panelGrid>
+       	</h:form>
+    </rich:panel>
+
+</ui:composition>

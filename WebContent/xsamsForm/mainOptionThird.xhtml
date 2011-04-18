@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j">
+ 
+ 	<h:panelGrid>
+        <rich:panel>
+            <f:facet name="header">
+                <h:outputText value="Sub-Options #3"/>
+            </f:facet>
+            
+            <a4j:form ajaxSubmit="true" reRender="formPanel3">
+                <h:panelGrid>
+                    <a4j:commandButton action="#{navigator.subOption13}" image="/img/subOption13.png" />
+                </h:panelGrid>
+            </a4j:form>
+            
+            <a4j:form ajaxSubmit="true" reRender="formPanel3">
+                <h:panelGrid>
+                    <a4j:commandButton action="#{navigator.subOption23}" image="/img/subOption23.png" />
+                </h:panelGrid>
+            </a4j:form>
+            
+            <a4j:form ajaxSubmit="true" reRender="formPanel3">
+                <h:panelGrid>
+                    <a4j:commandButton action="#{navigator.subOption33}" image="/img/subOption33.png" />
+                </h:panelGrid>
+            </a4j:form>            
+        </rich:panel>
+       
+    </h:panelGrid>               
+                
+
+</ui:composition>

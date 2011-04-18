@@ -21,7 +21,7 @@ public class XSAMSQueryGenerator {
 	private String xsamsURL = null; // Populated by xsamInterface.page.xml which receives xsam url
 
 	private String atomSymbol = null;
-	private String queryResultFormat = "xsams";
+	private String queryResultFormat = "XSAMS";
 
 	private String atomNuclearChargeFrom = null;
 	private String atomNuclearChargeTo = null;
@@ -314,8 +314,9 @@ public class XSAMSQueryGenerator {
 			} else {
 				firstEntry = false;
 			}
+			//RadTransWavelengthExperimentalValue ==> RadTransWavelength
 			xsamsQuery = xsamsQuery
-					+ " RadTransWavelengthExperimentalValue >= "
+					+ " RadTransWavelength >= "
 					+ radTransWavelengthExperimentalValueFrom ;
 		}
 		if (radTransWavelengthExperimentalValueTo != null
@@ -325,8 +326,9 @@ public class XSAMSQueryGenerator {
 			} else {
 				firstEntry = false;
 			}
+			//RadTransWavelengthExperimentalValue ==> RadTransWavelength
 			xsamsQuery = xsamsQuery
-					+ " RadTransWavelengthExperimentalValue <= "
+					+ " RadTransWavelength <= "
 					+ radTransWavelengthExperimentalValueTo;
 		}
 		
@@ -337,7 +339,8 @@ public class XSAMSQueryGenerator {
 			} else {
 				firstEntry = false;
 			}
-			xsamsQuery = xsamsQuery + " MolecularStateEnergyValue >= "
+			// MolecularStateEnergyValue ==> MoleculeStateEnergy
+			xsamsQuery = xsamsQuery + " MoleculeStateEnergy >= "
 					+ molecularStateEnergyValueFrom;
 		}
 		if (molecularStateEnergyValueTo != null
@@ -347,7 +350,7 @@ public class XSAMSQueryGenerator {
 			} else {
 				firstEntry = false;
 			}
-			xsamsQuery = xsamsQuery + " MolecularStateEnergyValue <= "
+			xsamsQuery = xsamsQuery + " MoleculeStateEnergy <= "
 					+ molecularStateEnergyValueTo;
 		}
 		if (molecularSpeciesInChIKeyValue != null
@@ -360,6 +363,7 @@ public class XSAMSQueryGenerator {
 			xsamsQuery = xsamsQuery + " MolecularSpeciesInChIKey = '"
 					+ molecularSpeciesInChIKeyValue + "'";
 		}
+		// MolecularSpeciesStoichiometrcFormula ==> MoleculeStoichiometricFormula
 		if (molecularSpeciesStoichiometrcFormulaValue != null
 				&& molecularSpeciesStoichiometrcFormulaValue.trim().length() > 0) {
 			if(firstEntry != true){
@@ -367,7 +371,7 @@ public class XSAMSQueryGenerator {
 			} else {
 				firstEntry = false;
 			}
-			xsamsQuery = xsamsQuery + " MolecularSpeciesStoichiometrcFormula = '"
+			xsamsQuery = xsamsQuery + " MoleculeStoichiometricFormula = '"
 			+ molecularSpeciesStoichiometrcFormulaValue + "'";
 		}
 
